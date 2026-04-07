@@ -1,54 +1,35 @@
-# CoinLog.ai — Self-Hosted Crypto Analysis Agent
+# CoinLog.ai — Your Crypto Data Stays on Your Infrastructure
 
-You keep control of your portfolio data. CoinLog is a private agent you run yourself, designed to provide on-chain and market insights without sending your information to a third-party service.
+Ask questions about your portfolio in plain language. The AI runs on your infrastructure, using your API keys. Your wallet addresses and balances never touch a third-party server.
 
-**Live public instance (no sign-up):** https://coinlog-ai.casey-digennaro.workers.dev  
-This is the exact code you will deploy. No user data is retained.
+**Live public test instance:** https://coinlog-ai.casey-digennaro.workers.dev
 
----
+## Why This Exists
+Most portfolio tools require you to send your wallet addresses to a remote server. This is built so you don't have to. You can ask "how much did my SOL gain this week?" without trusting an external privacy policy.
 
 ## Quick Start
+1.  **Fork** this repository.
+2.  **Deploy** to Cloudflare Workers with `wrangler deploy`.
+3.  **Add your keys** for market data (CoinGecko) and an LLM (OpenAI).
 
-Deploy your own private instance in a few minutes:
-1.  Fork this repository.
-2.  Deploy to Cloudflare Workers using `wrangler deploy`.
-3.  Configure your own API keys as environment variables.
+Your instance is now live. No accounts, no databases, no hidden steps.
 
----
+## How It Works
+This is a single, readable JavaScript file deployed as a Cloudflare Worker. It has zero npm dependencies. You provide the API keys; the entire application logic runs within your isolated Cloudflare environment. No data is written to disk or logged.
 
-## How This Works
+## What You Can Do
+*   **Self-Hosted Control**: Runs on Cloudflare Workers. Your portfolio data is queried live and never leaves your environment.
+*   **Connect Wallets**: Supports EVM-compatible wallets via read-only RPC calls.
+*   **Natural Language Queries**: Ask questions like "show me my worst performers this month" or "what's my total ETH balance?"
+*   **Basic DeFi Overview**: See liquidity provider positions and unclaimed rewards for supported protocols.
+*   **Fleet-Compatible**: Can be used standalone or connected to other agents in the Cocapn Fleet.
 
-CoinLog is an agent runtime built for self-hosting. You provide the API keys for market data, LLM inference (like OpenAI or Anthropic), and read-only access to your wallets or exchanges. The agent runs on your Cloudflare Workers account and only makes calls to services you have explicitly configured.
+## Limitations
+The agent provides a basic overview. Complex DeFi positions (e.g., nested yield strategies) may not be fully parsed. It currently supports EVM-compatible wallets only.
 
-**Core principle:** Your keys, your data, your infrastructure.
-
----
-
-## Features
-
-*   **Self-Hosted Control**: Runs on your Cloudflare account. Your portfolio data never leaves your setup.
-*   **Portfolio Context**: Connect most EVM-compatible wallets or read-only exchange APIs you configure.
-*   **Market Analysis**: Query your holdings with current market data using an LLM you control.
-*   **DeFi Position Overview**: Review basic liquidity pool positions and rewards.
-*   **Zero Runtime Dependencies**: Built for Cloudflare Workers; no npm dependencies.
-*   **Fleet-Compatible**: Optionally interoperate with other agents in the Cocapn Fleet, or run standalone.
-
-## One Honest Limitation
-
-Setting up integrations requires manual API key configuration for each service (e.g., blockchain RPC, market data, LLM). This gives you full control but means initial setup is not a single-click process.
+## License
+MIT License. Fork-first open source.
 
 ---
 
-## License & Contribution
-
-MIT Licensed. Use, modify, and redistribute for any purpose.
-
-This is an open agent in the Cocapn Fleet. The project follows a fork-first philosophy. You are encouraged to fork the repository and adapt it to your needs. Bug fixes and clear, minimal feature additions are welcome.
-
----
-
-MIT License • Superinstance & Lucineer (DiGennaro et al.)
-
-<div align="center">
-  <a href="https://the-fleet.casey-digennaro.workers.dev">The Fleet</a> • <a href="https://cocapn.ai">Cocapn</a>
-</div>
+<div style="text-align:center;padding:16px;color:#64748b;font-size:.8rem"><a href="https://the-fleet.casey-digennaro.workers.dev" style="color:#64748b">The Fleet</a> &middot; <a href="https://cocapn.ai" style="color:#64748b">Cocapn</a></div>
