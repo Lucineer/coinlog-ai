@@ -1,75 +1,64 @@
-# CoinLog.ai — AI Crypto Companion
+# CoinLog.ai — Self-Hosted Crypto Portfolio Agent
 
-You check your wallets multiple times a day. You still don't have a clear narrative of your portfolio.
+You shouldn't have to send your wallet history and portfolio data to a third-party service just to understand what you own.
 
-### Why this exists
-Most crypto trackers lock your data inside their platform. This is an agent you own. It runs on your infrastructure and answers the questions you ask in plain English. No third party ever sees your holdings.
+### Why it was built
+Many portfolio trackers lock your data or treat their analysis as a black box. CoinLog is a self-hosted agent that gives you control. It runs on your own Cloudflare Worker—no middleman server ever handles your private keys or data.
 
-Built on Cloudflare Workers with zero dependencies. Part of the Cocapn Fleet.
+This is a standard vessel on the Cocapn Fleet, built using open protocols for interoperability with other agents.
 
-**Live URL:** https://coinlog-ai.casey-digennaro.workers.dev
-
----
-
-## What makes this different
-- **You own the agent.** Fork this repository. It runs on your Cloudflare account. No one can shut it off.
-- **No telemetry.** Your wallet addresses and queries never leave your worker.
-- **One source file.** No build step or `node_modules`. Deploy in under two minutes.
-- **Natural language interface.** Ask "what's my largest holding?" or "how much yield did I earn this week?"
+**Live test instance:** https://coinlog-ai.casey-digennaro.workers.dev
 
 ---
 
-## Features
-- Track any wallet balance across EVM chains
-- Pull market data from top exchanges
-- View basic DeFi positions (supply, borrow, stake)
-- Query your portfolio using natural language
-- Optional Bring Your Own Key for AI and data providers
-- Zero runtime dependencies; runs entirely on Cloudflare's edge
-- Interoperable with other Cocapn Fleet agents
+### How it works
+- **Fully self-hosted** – You deploy and control the instance. No telemetry or mandatory accounts.
+- **Fork-first** – Adapt the code for your needs, then share improvements back if you choose.
+- **Zero runtime dependencies** – Every line that runs in production is visible in this repository.
+- **BYOK (Bring Your Own Keys)** – The agent has no built-in backend keys. You supply all credentials via environment variables.
 
 ---
 
-## Quick Start
-1. Fork this repository.
-2. Deploy it to Cloudflare Workers (no configuration needed).
-3. Edit `worker.ts` to add your own keys or adjust the agent's behavior.
+### What you can do
+- **Track holdings** – View balances from connected EVM wallets and exchange APIs you configure.
+- **Query with context** – Ask questions about your portfolio using an LLM, with access to current market data.
+- **Basic DeFi context** – Review position data for supported liquidity pools.
+- **Fleet-native** – Communicate with other agents in the Cocapn Fleet for expanded workflows.
+- **MIT Licensed** – Use, modify, or distribute without restriction.
 
 ---
 
-## Architecture
-A single Cloudflare Worker that follows the Cocapn Fleet protocol. It exposes structured endpoints for portfolio queries and uses external APIs for market data. All logic executes at the edge, in your instance.
+### Quick start
+1. **Fork** this repository.
+2. **Deploy** to Cloudflare Workers.
+3. **Configure** your API keys in the worker environment variables.
 
 ---
 
-## Bring Your Own Keys
-You control all external connections. Provide your own keys for:
-- AI models (OpenAI, Anthropic, or compatible providers)
-- Crypto market data APIs
-- Blockchain RPC endpoints
+### Bring Your Own Keys
+You supply and control all external service keys. The agent supports:
+- Market data APIs (CoinGecko, CoinMarketCap)
+- LLM providers (OpenAI, Anthropic, or local models via a tunnel)
+- Read-only wallet and exchange APIs
 
-Keys are only sent from your worker directly to the target service.
-
----
-
-## Limitations
-This runs on Cloudflare Workers, which imposes execution time and memory constraints. Complex portfolio analysis with hundreds of positions may hit these limits. The agent is designed for clarity, not high-frequency trading.
+No keys are shared with or sent to Cocapn or Fleet infrastructure.
 
 ---
 
-## Contributing
-This is an open vessel in the Cocapn Fleet. Fork first, build what you need, and open a pull request when it's ready. For major changes, please open an issue to discuss.
+### One current limitation
+The agent requires manual configuration of each data source and does not automatically discover or sync all possible DeFi positions. You set up the integrations you need.
 
 ---
 
-## License
-MIT License
+### Contributing
+This is a public Fleet vessel. Fork the repository, build what you need, and contributions back are welcome. Focus on bug fixes, reliability, and well-scoped features.
 
-Superinstance & Lucineer (DiGennaro et al.)
+---
+
+MIT License • Superinstance & Lucineer (DiGennaro et al.)
 
 ---
 
 <div align="center">
-  <a href="https://the-fleet.casey-digennaro.workers.dev">The Fleet</a> • 
-  <a href="https://cocapn.ai">Cocapn</a>
+  <a href="https://the-fleet.casey-digennaro.workers.dev">The Fleet</a> • <a href="https://cocapn.ai">Cocapn</a>
 </div>
