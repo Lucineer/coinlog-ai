@@ -1,59 +1,75 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Lucineer/capitaine/master/docs/capitaine-logo.jpg" alt="Capitaine" width="120">
-</p>
+# CoinLog.ai — AI Crypto Companion
 
-<h1 align="center">coinlog-ai</h1>
+You check your wallets multiple times a day. You still don't have a clear narrative of your portfolio.
 
-<p align="center">Crypto Portfolio — AI-powered cryptocurrency portfolio tracking.</p>
+### Why this exists
+Most crypto trackers lock your data inside their platform. This is an agent you own. It runs on your infrastructure and answers the questions you ask in plain English. No third party ever sees your holdings.
+
+Built on Cloudflare Workers with zero dependencies. Part of the Cocapn Fleet.
+
+**Live URL:** https://coinlog-ai.casey-digennaro.workers.dev
 
 ---
 
-**Vessel stub** · Needs `worker.ts` to deploy · Part of the [Lucineer fleet](https://github.com/orgs/Lucineer/repositories)
+## What makes this different
+- **You own the agent.** Fork this repository. It runs on your Cloudflare account. No one can shut it off.
+- **No telemetry.** Your wallet addresses and queries never leave your worker.
+- **One source file.** No build step or `node_modules`. Deploy in under two minutes.
+- **Natural language interface.** Ask "what's my largest holding?" or "how much yield did I earn this week?"
 
-## Status
+---
 
-🟡 Hull not yet deployed. Fork and add a `worker.ts` to bring this vessel online.
+## Features
+- Track any wallet balance across EVM chains
+- Pull market data from top exchanges
+- View basic DeFi positions (supply, borrow, stake)
+- Query your portfolio using natural language
+- Optional Bring Your Own Key for AI and data providers
+- Zero runtime dependencies; runs entirely on Cloudflare's edge
+- Interoperable with other Cocapn Fleet agents
 
-## The Fleet
+---
 
+## Quick Start
+1. Fork this repository.
+2. Deploy it to Cloudflare Workers (no configuration needed).
+3. Edit `worker.ts` to add your own keys or adjust the agent's behavior.
 
-<details>
-<summary><strong>⚓ The Fleet</strong></summary>
+---
 
-**Flagship vessels**
+## Architecture
+A single Cloudflare Worker that follows the Cocapn Fleet protocol. It exposes structured endpoints for portfolio queries and uses external APIs for market data. All logic executes at the edge, in your instance.
 
-- [cocapn.ai](https://github.com/Lucineer/capitaine)
-- [personallog.ai](https://github.com/Lucineer/personallog-ai)
-- [businesslog.ai](https://github.com/Lucineer/businesslog-ai)
-- [studylog.ai](https://github.com/Lucineer/studylog-ai)
-- [makerlog.ai](https://github.com/Lucineer/makerlog-ai)
-- [playerlog.ai](https://github.com/Lucineer/playerlog-ai)
-- [dmlog.ai](https://github.com/Lucineer/dmlog-ai)
-- [reallog.ai](https://github.com/Lucineer/reallog-ai)
-- [deckboss.ai](https://github.com/Lucineer/deckboss-ai)
+---
 
-**Fleet services**
+## Bring Your Own Keys
+You control all external connections. Provide your own keys for:
+- AI models (OpenAI, Anthropic, or compatible providers)
+- Crypto market data APIs
+- Blockchain RPC endpoints
 
-- [Fleet Catalog](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
-- [Git Agent (full)](https://github.com/Lucineer/git-agent)
-- [Cocapn Lite (minimal)](https://github.com/Lucineer/cocapn-lite)
-- [Fleet Orchestrator](https://github.com/Lucineer/fleet-orchestrator)
-- [Dead Reckoning Engine](https://github.com/Lucineer/dead-reckoning-engine)
-- [Dream Engine](https://github.com/Lucineer/dream-engine)
-- [Seed UI (5 layers)](https://github.com/Lucineer/seed-ui)
+Keys are only sent from your worker directly to the target service.
 
-**For power users**
+---
 
-- [Cocapn Lite (tabula rasa)](https://github.com/Lucineer/cocapn-lite)
-- [Cocapn (core platform)](https://github.com/Lucineer/cocapn)
-- [ZeroClaw (framework)](https://github.com/Lucineer/zeroclaw)
+## Limitations
+This runs on Cloudflare Workers, which imposes execution time and memory constraints. Complex portfolio analysis with hundreds of positions may hit these limits. The agent is designed for clarity, not high-frequency trading.
 
-[View all 106 repos →](https://github.com/orgs/Lucineer/repositories)
-[Fleet manifest →](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
+---
 
-</details>
+## Contributing
+This is an open vessel in the Cocapn Fleet. Fork first, build what you need, and open a pull request when it's ready. For major changes, please open an issue to discuss.
 
+---
 
 ## License
+MIT License
 
-MIT · Superinstance & Lucineer (DiGennaro et al.)
+Superinstance & Lucineer (DiGennaro et al.)
+
+---
+
+<div align="center">
+  <a href="https://the-fleet.casey-digennaro.workers.dev">The Fleet</a> • 
+  <a href="https://cocapn.ai">Cocapn</a>
+</div>
